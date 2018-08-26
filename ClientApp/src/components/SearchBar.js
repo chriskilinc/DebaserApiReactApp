@@ -53,9 +53,9 @@ export default class SearchBar extends Component {
 
     handleSearch = () => {
         let searchOptions = {
-            from: this.state.dateFrom,
-            to: this.state.dateTo,
-            venue: this.state.selectedVenue
+            From: this.state.dateFrom,
+            To: this.state.dateTo,
+            Venue: this.state.selectedVenue
         }
 
         this.props.handleSearch(searchOptions);
@@ -67,12 +67,12 @@ export default class SearchBar extends Component {
             <section className="searchbar">
                 <div className="option">
                     <p>Från:</p>
-                    <input type="date" value={this.state.dateFrom} onChange={this.handleFromInput} />
+                    <input type="date" value={this.state.dateFrom} onChange={this.handleFromInput} pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"/>
                 </div>
 
                 <div className="option">
                     <p>Till:</p>
-                    <input type="date" value={this.state.dateTo} onChange={this.handleToInput} />
+                    <input type="date" value={this.state.dateTo} onChange={this.handleToInput} pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"/>
                 </div>
 
                 <div className="option">
@@ -84,7 +84,7 @@ export default class SearchBar extends Component {
                 </div>
 
                 <div className="option">
-                    <button href="#" className="btn btn--search" onClick={this.handleSearch}>Search</button>
+                    <button href="#" className="btn btn--search" onClick={this.handleSearch}>SÖK</button>
                 </div>
                 
             </section>
