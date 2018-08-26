@@ -8,21 +8,25 @@ export default class SearchBar extends Component {
         this.state = {
             dateFrom: "2018-01-01",
             dateTo: "2018-01-01",
+            selectedVenue: "medis",
             venues: [
                 {
                     id: "medis",
-                    name: "Medborgarplatsen"
+                    name: "Medis"
                 },
                 {
                     id: "slussen",
                     name: "Slussen"
+                },
+                {
+                    id: "strand",
+                    name: "Strand"
                 }
             ]
         }
     }
 
     componentDidMount = () => {
-        var dateObj = new Date();
         this.setState({
             dateFrom: new Date().toISOString().split('T')[0],
             dateTo: new Date().toISOString().split('T')[0]
@@ -41,28 +45,47 @@ export default class SearchBar extends Component {
         });
     };
 
+    handleVenueInput = event => {
+        this.setState({
+            selectedVenue: event.target.value
+        });
+    };
+
+    handleSearch = () => {
+        let searchOptions = {
+            from: this.state.dateFrom,
+            to: this.state.dateTo,
+            venue: this.state.selectedVenue
+        }
+
+        this.props.handleSearch(searchOptions);
+
+    }
+
     render() {
         return (
             <section className="searchbar">
                 <div className="option">
-                    <p>From:</p>
+                    <p>Från:</p>
                     <input type="date" value={this.state.dateFrom} onChange={this.handleFromInput} />
                 </div>
 
                 <div className="option">
-                    <p>To:</p>
+                    <p>Till:</p>
                     <input type="date" value={this.state.dateTo} onChange={this.handleToInput} />
                 </div>
 
                 <div className="option">
-                    <p>Venue:</p>
+                    <p>Plats:</p>
 
-                    <select>
-                        {this.state.venues.map(venue => <option key={venue.id} value={venue.id}>{venue.name}</option>)}
+                    <select onChange={this.handleVenueInput} value={this.state.selectedVenue}>
+                        {this.state.venues.map(venue => <option key={venue.id} value={venue.id} >{venue.name}</option>)}
                     </select>
                 </div>
 
-                
+                <div className="option">
+                    <button href="#" className="btn btn--search" onClick={this.handleSearch}>Search</button>
+                </div>
                 
             </section>
         );
