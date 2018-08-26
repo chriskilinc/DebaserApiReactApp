@@ -1,0 +1,18 @@
+﻿.navigation {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+    .navigation .brand img {
+        width: 200px;
+        height: auto;
+    }
+
+    .navigation .content {
+        align-self:center;
+        font-size:16px;
+        color: #999;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
