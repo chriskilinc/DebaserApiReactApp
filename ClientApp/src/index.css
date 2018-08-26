@@ -1,5 +1,7 @@
-:root{
+:root {
     --containerSpace: 20vw;
+    --colorDark: #323232;
+    --colorGrey: #999;
 }
 .application{
     padding: 0 var(--containerSpace);
