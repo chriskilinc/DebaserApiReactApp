@@ -1,0 +1,24 @@
+﻿.event {
+    flex: 1 0 30%; /* explanation below */
+    margin: 5px;
+    height: auto;
+    border:1px solid #e5e5e5;
+    padding:0px 10px;
+    color:var(--colorDark);
+}
+
+.event--header {
+    color: var(--colorGrey);
+    font-weight:bold;
+}
+.event--status{
+    font-weight:bold;
+}
+.event--title{
+    font-size:2rem;
+    text-decoration:none;
+    color: var(--colorDark);
+}
+.event--title:hover{
+    text-decoration:underline;
+}
