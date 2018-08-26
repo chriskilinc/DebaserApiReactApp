@@ -1,6 +1,11 @@
-@media (max-width: 767px) {
-    /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
-    body {
-        padding-top: 50px;
-    }
+:root{
+    --containerSpace: 20vw;
+}
+.application{
+    padding: 0 var(--containerSpace);
+}
+body {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
 }
