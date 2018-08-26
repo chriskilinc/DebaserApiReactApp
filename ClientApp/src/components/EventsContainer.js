@@ -14,7 +14,7 @@ export default class EventsContainer extends Component {
                 
                 <div className="events">
 
-                    {this.props.eventsNotFound ? <p className="events--error">Tyvärr finns det ej några evenemang under denna tidsperiod, försök att söka under en annan tidsperiod!</p> : null}
+                    {this.props.eventsNotFound ? <p className="events--error">Tyvärr finns det ej några evenemang under denna tidsperiod, Försök att söka under en annan tidsperiod!</p> : null}
                     {this.props.events.length > 0 ? this.props.events.map(event => <Event key={event.EventId} eventName={event.Event} subHead={event.SubHead} venue={event.Venue} eventDate={event.EventDate} room={event.Room} age={event.Age} time={event.Open} eventUrl={event.EventUrl} />) : null}
 
 

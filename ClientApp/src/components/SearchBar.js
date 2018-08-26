@@ -49,6 +49,18 @@ export default class SearchBar extends Component {
         this.setState({
             selectedVenue: event.target.value
         });
+
+        if (event.target.value == "slussen") {
+            console.log("nope")
+            this.setState({
+                closedVenue: true,
+            })
+        } else {
+            this.setState({
+                closedVenue: false,
+            })
+        }
+
     };
 
     handleSearch = () => {
@@ -86,7 +98,10 @@ export default class SearchBar extends Component {
                 <div className="option">
                     <button href="#" className="btn btn--search" onClick={this.handleSearch}>SÖK</button>
                 </div>
-                
+
+                <div className="message">
+                    {this.state.closedVenue ? <p>Denna Plats är tyvvär stängd för tillfället!</p> : null}
+                </div>
             </section>
         );
     }

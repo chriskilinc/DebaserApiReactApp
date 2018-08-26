@@ -3,8 +3,16 @@
     border: 1px solid #e5e5e5;
     border-top: 0px;
     padding: 20px;
+    align-items:center;
    
 }
+.searchbar .message{
+    font-size:14px;
+    padding:0px 20px;
+}
+    .searchbar .message p {
+        margin: 0;
+    }
 .searchbar .option{
 
 }
