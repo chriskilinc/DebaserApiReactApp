@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import EventsContainer from './components/EventsContainer';
+import axios from 'axios';
 
 export default class App extends Component {
     constructor() {
@@ -10,22 +11,36 @@ export default class App extends Component {
         this.state = {
             events: [
                 
-            ]
+            ],
+            eventsNotFound: false,
         }
+        
     }
 
-    fetchDebaserApi = (dateTo, dateFrom, venue) => {
-        console.log(dateTo, dateFrom, venue);
-
-        //  Build Fetch
-
-        //  Fetch
-        var fetch = "fetch";
-
+    fetchDebaserApi = (SearchOptions) => {
+        axios.post('api/Events/GetEvents/', SearchOptions)
+            .then(response => {
+                console.log(response.data)
+                this.setState({
+                    events: response.data,
+                    eventsNotFound: false
+                })
+            })
+            .catch(error => {
+                console.log(error)
+                this.setState({
+                    eventsNotFound: true
+                })
+            })
     }
+
 
     handleSearch = (searchOptions) => {
         console.log(searchOptions);
+        this.setState({
+            eventsNotFound: false
+        })
+        this.fetchDebaserApi(searchOptions);
     }
 
     render() {
@@ -33,7 +48,7 @@ export default class App extends Component {
             <div className="application">
                 <Header />
                 <SearchBar handleSearch={this.handleSearch} />
-              <EventsContainer />
+                <EventsContainer events={this.state.events} eventsNotFound={this.state.eventsNotFound} />
           </div>
       );
     }
